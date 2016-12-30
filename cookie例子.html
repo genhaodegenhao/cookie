@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<form id="form1" action="">
+			<span>账号</span>
+			<input id="txt1" type="text" />
+			<span>密码</span>
+			<input id="txt2" type="password" />
+			<input id="btn" type="submit" value="提交"/>
+			<input id="check1" type="checkbox" />记住账号
+			<input id="check2" type="checkbox" />记住密码
+		</form>
+	</body>
+	<script>
+		var f1=document.getElementById("form1");
+		var txt1=document.getElementById("txt1");
+		var txt2=document.getElementById("txt2");
+		var btn=document.getElementById("btn");
+		var c1=document.getElementById("check1");
+		var c2=document.getElementById("check2");
+		
+		//创建cookie
+		function setCookie(name,value,timer){
+			var date1=new Date();
+			var day=date1.getDate();
+			date1.setDate(day+timer);
+			document.cookie=name+"="+value+"; expires="+date1;
+		}
+		//获取cookie
+		function getCookie(name){
+			var cookie1=document.cookie;
+			var arr=cookie1.split("; ");
+//			console.log(arr);
+			for (i=0;i<arr.length;i++) {
+				var arr2=arr[i].split("=");
+//				console.log(arr2);
+				if(arr2[0]==name){
+					return arr2[1];
+					console.log(arr2[1]);
+				}
+			}
+		}
+		
+		//删除cookie，其实就是让时间变成负数
+		function removeCookie(name){
+			setCookie(name," ",-2);		
+		}
+		
+		if(getCookie("txt1")){
+			txt1.value=getCookie("txt1");
+			c1.checked=true;			//相当于(c1.checked="checked";)
+		}
+		if(getCookie("txt2")){
+			txt2.value=getCookie("txt2");
+			c2.checked="checked";
+		}
+		f1.onsubmit=function(){
+			if (c1.checked) {
+				setCookie("txt1",txt1.value,1);
+			} else{
+				removeCookie("txt1");
+			}
+			if (c2.checked) {
+				setCookie("txt2",txt2.value,1);
+			} else{
+				removeCookie("txt2");
+			}
+		}
+		
+		
+		
+		
+	</script>
+</html>

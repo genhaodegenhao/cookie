@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>获取cookie</title>
+	</head>
+	<body>
+		
+		<p>Hello: <span id="username"></span></p>
+		
+		<script src="../js/jquery.js"></script>
+		<script src="../js/cookie.js"></script>
+		<script>
+			window.onload = function(){
+				var cook = $.cookie("username"); 
+//				alert(cook);
+//				var username = document.getElementById("username");
+//				username.innerHTML = cook;
+//				alert($("#username")[0]);
+				$("#username")[0].innerHTML = cook;
+				
+			}
+//			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script>
+		//名值对
+//		user=somebody;
+		
+		//创建cookie
+		function setCookie(name,value,expires){
+			var date1=new Date();		
+			var day=date1.getDate();		//得到当前时间
+			date1.setDate(day+expires);		//5是可变的，表示保存的天数。用setDate（）。
+			document.cookie=name+"="+value+"; expires="+date1;
+		}
+		
+		//获取cookie
+		function getCookie(name){
+						//user=somebody; pass=12345
+			var cookie1=document.cookie;
+			var arr=cookie1.split("; ");
+						//[ user=somebody,pass=12345 ]
+			for (i=0;i<arr.length;i++) {
+				var arr2=arr[i].split("=");
+						//[user,somebody]  [pass,12345]
+				if(arr2[0]==name){
+					return arr2[1];
+				}
+			}
+		}
+		
+		//删除cookie
+		function removeCookie(name){
+			setCookie(name,".",-1);    //把时间调成负数
+		}
+		setCookie("user","xiaoxiao",10);
+//		removeCookie("user");
+	</script>
+</html>

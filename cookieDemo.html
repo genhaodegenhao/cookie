@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>生成cookie</title>
+	</head>
+	<body>
+		<span>账号</span>
+		<input id="username" type="text" />
+		<span>密码</span>
+		<input id="btn" type="submit" value="提交"/>
+		<input id="check1" type="checkbox" />记住账号
+	</body>
+	<script src="../js/jquery.js"></script>
+	<script src="../js/cookie.js"></script>
+	<script>
+		$("#btn").click(function(){
+			var value = $("#username").val();
+			
+			//生成cookie
+			$.cookie("username",value,{expires:7,path:"/"});
+			
+			//获取cookie
+			
+		})
+	</script>
+</html>
